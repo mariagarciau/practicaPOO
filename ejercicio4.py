@@ -21,11 +21,12 @@ de 12 dígitos. Cuando las cuentas estén iniciadas a un sueldo inicial de 10.00
 de unas a otras las cantidades de 2000 €, ingresar 575 € y retirar dinero 78 €.
 """
 from datetime import date
+import random
 class CuentaBancaria():
     def __init__(self,ID,titular,fechaApertura,nºcuenta,saldo):
         str : self.ID = ID
         str : self.titular = titular
-        str : self.fechaApertura = fechaApertura
+        fechaApertura = input("Intorduce la fecha en la que quiere retirar el dinero: "+date())
         int : self.nºcuenta = nºcuenta
         float: self.saldo = saldo
     def retirarDinero(self, dineroRetirado):
@@ -95,3 +96,25 @@ class CuentaVIP():
         else:
             self.saldo = self.saldo - dineroTransferido
             print("Ha transferido: "+str(dineroTransferido)+"€. Su saldo actual es de: "+str(self.saldo)+"€")
+class lasTresCuentas(CuentaBancaria,CuentaPlazoFijo,CuentaVIP):
+    cuenta1 = CuentaBancaria("ES100200300","María",date(),random.randint(1,15),10000)
+    cuenta2 = CuentaPlazoFijo("ES200300400","Sara",date(),random.randint(1,15),5000)
+    cuenta3 = CuentaVIP("ES300400500","Paula",date(),random.randint(1,12),2000)
+    if cuenta1.saldo()>=10000:
+        cuenta1.transferirDinero(2000)
+        cuenta1.retirarDinero(78)
+        cuenta1.ingresarDinero(575)
+        cuenta2.saldo=cuenta2.saldo+2000
+        cuenta3.saldo=cuenta3.saldo+2000
+    if cuenta2.saldo()>=10000:
+        cuenta2.transferirDinero(2000)
+        cuenta2.retirarDinero(78)
+        cuenta2.ingresarDinero(575)
+        cuenta1.saldo=cuenta1.saldo+2000
+        cuenta3.saldo=cuenta3.saldo+2000
+    if cuenta3.saldo()>=10000:
+        cuenta3.transferirDinero(2000)
+        cuenta3.retirarDinero(78)
+        cuenta3.ingresarDinero(575)
+        cuenta2.saldo=cuenta2.saldo+2000
+        cuenta1.saldo=cuenta1.saldo+2000
