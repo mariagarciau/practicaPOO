@@ -62,7 +62,15 @@ class CuentaPlazoFijo():
             self.saldo = self.saldo - dineroRetirado
             print("Ha retirado: "+str(dineroRetirado)+"€ después de la fecha de vencimiento, " +
             "por lo que no se le ha cargado un 5"+ "%" +"dicional. Su saldo actual es de: "+str(self.saldo)+"€")
-
+    def ingresarDinero(self, dineroIngresado):
+        self.saldo = self.saldo + dineroIngresado
+        print("Ha ingresado: "+str(dineroIngresado)+"€. Su saldo actual es de: "+str(self.saldo)+"€")
+    def transferirDinero(self, dineroTransferido):
+        if dineroTransferido>self.saldo:
+            print("No dispone del dinero suficiente para transferir la cantidad que desea")
+        else:
+            self.saldo = self.saldo - dineroTransferido
+            print("Ha transferido: "+str(dineroTransferido)+"€. Su saldo actual es de: "+str(self.saldo)+"€")
 
 class CuentaVIP():
     def __init__(self,ID,titular,fechaApertura,nºcuenta,saldo,negativoMax):
@@ -72,3 +80,18 @@ class CuentaVIP():
         int : self.nºcuenta = nºcuenta
         float: self.saldo = saldo
         float : self.negativoMax = negativoMax
+    def retirarDinero(self, dineroRetirado):
+        if dineroRetirado>self.negativoMax:
+            print("No dispone del dinero suficiente para retirar la cantidad que desea")
+        else:
+            self.saldo = self.saldo - dineroRetirado
+            print("Ha retirado: "+str(dineroRetirado)+"€. Su saldo actual es de: "+str(self.saldo)+"€")
+    def ingresarDinero(self, dineroIngresado):
+        self.saldo = self.saldo + dineroIngresado
+        print("Ha ingresado: "+str(dineroIngresado)+"€. Su saldo actual es de: "+str(self.saldo)+"€")
+    def transferirDinero(self, dineroTransferido):
+        if dineroTransferido>self.negativoMax:
+            print("No dispone del dinero suficiente para transferir la cantidad que desea")
+        else:
+            self.saldo = self.saldo - dineroTransferido
+            print("Ha transferido: "+str(dineroTransferido)+"€. Su saldo actual es de: "+str(self.saldo)+"€")
