@@ -26,11 +26,11 @@ class CuentaBancaria():
     def __init__(self,ID,titular,fechaApertura,nºcuenta,saldo):
         str : self.ID = ID
         str : self.titular = titular
-        fechaApertura = date(2020,11,6)
+        self.fechaApertura = fechaApertura.date(2020,11,6)
         int : self.nºcuenta = nºcuenta
         float: self.saldo = saldo
     def retirarDinero(self, dineroRetirado):
-        if self.saldo<dineroRetirado:
+        if (self.saldo)<dineroRetirado:
             print("No dispone del dinero suficiente para retirar la cantidad que desea")
         else:
             self.saldo = self.saldo - dineroRetirado
@@ -48,7 +48,7 @@ class CuentaPlazoFijo():
     def __init__(self,ID,titular,fechaApertura,nºcuenta,saldo):
         str : self.ID = ID
         str : self.titular = titular
-        fechaApertura = date(2020,11,6)
+        fechaApertura = fechaApertura.date(2020,11,6)
         int : self.nºcuenta = nºcuenta
         float: self.saldo = saldo
 
@@ -77,7 +77,7 @@ class CuentaVIP():
     def __init__(self,ID,titular,fechaApertura,nºcuenta,saldo,negativoMax):
         str : self.ID = ID
         str : self.titular = titular
-        fechaApertura = date(2020,11,6)
+        fechaApertura = fechaApertura.date(2020,11,6)
         int : self.nºcuenta = nºcuenta
         float: self.saldo = saldo
         float : self.negativoMax = negativoMax
@@ -100,7 +100,7 @@ class lasTresCuentas(CuentaBancaria,CuentaPlazoFijo,CuentaVIP):
     cuenta1 = CuentaBancaria("ES100200300","María",date(2021,3,19),random.randint(1,15),10000)
     cuenta2 = CuentaPlazoFijo("ES200300400","Sara",date(2021,1,12),random.randint(1,15),5000)
     cuenta3 = CuentaVIP("ES300400500","Paula",date(2021,3,6),random.randint(1,12),2000,3000)
-    if cuenta1.saldo()>=10000:
+    if cuenta1.saldo>=10000:
         cuenta1.transferirDinero(2000)
         cuenta1.retirarDinero(78)
         cuenta1.ingresarDinero(575)
