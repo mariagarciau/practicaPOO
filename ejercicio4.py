@@ -20,3 +20,26 @@ más antigua que la fecha de vencimiento, y el número de cuenta tiene que ser u
 de 12 dígitos. Cuando las cuentas estén iniciadas a un sueldo inicial de 10.000 €, transferir dinero
 de unas a otras las cantidades de 2000 €, ingresar 575 € y retirar dinero 78 €.
 """
+class CuentaBancaria():
+    def __init__(self,ID,titular,fechaApertura,nºcuenta,saldo):
+        str : self.ID = titular
+        str : self.titular = titular
+        str : self.fechaApertura = fechaApertura
+        int : self.nºcuenta = nºcuenta
+        float: self.saldo = saldo
+    def retirarDinero(self, dineroRetirado):
+        if dineroRetirado>self.saldo:
+            print("No dispone del dinero suficiente para retirar la cantidad que desea")
+        else:
+            self.saldo = self.saldo - dineroRetirado
+            print("Ha retirado: "+str(dineroRetirado)+"€. Su saldo actual es de: "+str(self.saldo)+"€")
+    def ingresarDinero(self, dineroIngresado):
+        self.saldo = self.saldo + dineroIngresado
+        print("Ha ingresado: "+str(dineroIngresado)+"€. Su saldo actual es de: "+str(self.saldo)+"€")
+    def transferirDinero(self, dineroTransferido):
+        if dineroTransferido>self.saldo:
+            print("No dispone del dinero suficiente para transferir la cantidad que desea")
+        else:
+            self.saldo = self.saldo - dineroTransferido
+            print("Ha transferido: "+str(dineroTransferido)+"€. Su saldo actual es de: "+str(self.saldo)+"€")
+    
