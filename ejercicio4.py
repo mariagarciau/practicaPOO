@@ -20,9 +20,10 @@ más antigua que la fecha de vencimiento, y el número de cuenta tiene que ser u
 de 12 dígitos. Cuando las cuentas estén iniciadas a un sueldo inicial de 10.000 €, transferir dinero
 de unas a otras las cantidades de 2000 €, ingresar 575 € y retirar dinero 78 €.
 """
+from datetime import date
 class CuentaBancaria():
     def __init__(self,ID,titular,fechaApertura,nºcuenta,saldo):
-        str : self.ID = titular
+        str : self.ID = ID
         str : self.titular = titular
         str : self.fechaApertura = fechaApertura
         int : self.nºcuenta = nºcuenta
@@ -42,4 +43,32 @@ class CuentaBancaria():
         else:
             self.saldo = self.saldo - dineroTransferido
             print("Ha transferido: "+str(dineroTransferido)+"€. Su saldo actual es de: "+str(self.saldo)+"€")
-    
+class CuentaPlazoFijo():
+    def __init__(self,ID,titular,fechaApertura,nºcuenta,saldo):
+        str : self.ID = ID
+        str : self.titular = titular
+        str : self.fechaApertura = fechaApertura
+        int : self.nºcuenta = nºcuenta
+        float: self.saldo = saldo
+
+    def retirarDinero(self,dineroRetirado):
+        hoy=input("Intorduce la fecha en la que quiere retirar el dinero: "+date())
+        vencimiento=input("Introduce la fecha de vencimiento de tu cuenta: "+date())
+        if hoy<vencimiento:
+            self.saldo = self.saldo - dineroRetirado - (self.saldo*0.05)
+            print("Ha retirado: "+str(dineroRetirado)+"€ antes de la fecha de vencimiento, " +
+            "por lo que se le ha cargado un 5"+ "%" +"dicional. Su saldo actual es de: "+str(self.saldo)+"€")
+        else:
+            self.saldo = self.saldo - dineroRetirado
+            print("Ha retirado: "+str(dineroRetirado)+"€ después de la fecha de vencimiento, " +
+            "por lo que no se le ha cargado un 5"+ "%" +"dicional. Su saldo actual es de: "+str(self.saldo)+"€")
+
+
+class CuentaVIP():
+    def __init__(self,ID,titular,fechaApertura,nºcuenta,saldo,negativoMax):
+        str : self.ID = ID
+        str : self.titular = titular
+        str : self.fechaApertura = fechaApertura
+        int : self.nºcuenta = nºcuenta
+        float: self.saldo = saldo
+        float : self.negativoMax = negativoMax
